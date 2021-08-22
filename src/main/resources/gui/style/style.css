@@ -1,0 +1,89 @@
+.button {
+    -fx-background-insets: 0 0 0 0, 0, 1, 1;
+    -fx-text-fill: #5F6467;
+    -fx-background-color: #5F6467;
+    -fx-background-radius: 50;
+}
+
+#startButton {
+    -fx-background-color: #54A127;
+}
+
+#stopButton {
+    -fx-background-color: #DA4308;
+}
+
+#resetButton {
+    -fx-background-color: #FAC001;
+}
+
+.background-color-red {
+    -fx-background-insets: 0 0 0 0, 0, 1, 1;
+    -fx-text-fill: #2e0d0d;
+    -fx-border-color: #2e0d0d;
+    -fx-background-color: #ae2323;
+}
+
+.background-color-green {
+    -fx-background-insets: 0 0 0 0, 0, 1, 1;
+    -fx-text-fill: #142E0D;
+    -fx-border-color: #142E0D;
+    -fx-background-color: #489720;
+}
+
+.background-color-yellow {
+    -fx-background-insets: 0 0 0 0, 0, 1, 1;
+    -fx-text-fill: #2e290d;
+    -fx-border-color: #2e290d;
+    -fx-background-color: #979520;
+}
+
+.button:hover {
+    -fx-background-color: #82898D;
+    -fx-effect: dropshadow(three-pass-box, rgba(43, 43, 43, 0.8), 5, 0, 0, 0);
+}
+
+.border-width-5 {
+    -fx-border-width: 5px;
+}
+
+.button:pressed {
+    -fx-effect: innershadow(gaussian, rgba(43, 43, 43, 0.8), 20, 0, 0, 0);
+}
+
+.shadow {
+    -fx-effect: dropshadow(three-pass-box, rgba(43, 43, 43, 0.8), 5, 0, 0, 0);
+}
+
+.panel-style {
+    -fx-background-color: #ED9A5A;
+    -fx-border-color: #63442F;
+    -fx-border-width: 10;
+}
+
+.selected {
+    -fx-fill: #307722;
+    -fx-font-size: 14;
+    -fx-underline: false;
+    -fx-font-weight: bold;
+}
+
+.not-selected {
+    -fx-fill: #ae2323;
+    -fx-underline: true;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+
+#minRamValue, #maxRamValue {
+    -fx-border-color: #142E0D;
+    -fx-alignment: center;
+}
+
+.choose-area {
+    -fx-background-insets: 0 0 0 0, 0, 1, 1;
+    -fx-border-color: #142E0D;
+    -fx-background-color: #D7DDE4;
+    -fx-border-width: 10px;
+    -fx-border-color: #63442F;
+}
