@@ -1,6 +1,5 @@
 package jtimer.controllers;
 
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -13,7 +12,6 @@ import jtimer.service.Timer;
 import javafx.scene.text.Text;
 
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 public class RootController {
 
@@ -24,13 +22,7 @@ public class RootController {
     private AnchorPane timerInputPanel;
 
     @FXML
-    private Arc hourTimeLine;
-
-    @FXML
-    private Arc minTimeLine;
-
-    @FXML
-    private Arc secTimeLine;
+    private Arc timeLine;
 
     @FXML
     private Button startButton;
@@ -57,16 +49,17 @@ public class RootController {
             int m = Integer.parseInt(minutesTextField.getText());
             int s = Integer.parseInt(secondsTextField.getText());
             LocalTime lt = LocalTime.of(h, m, s);
+            timeLine.setLength(360);
             timerInputPanel.setDisable(true);
             timerInputPanel.setOpacity(0);
             startButton.setDisable(true);
             resetButton.setDisable(false);
-            background = new Thread(() -> Platform.runLater(() -> {
-                timer = new Timer(lt, hourTimeLine, minTimeLine, secTimeLine, timerText);
+            background = new Thread(() -> {
+                timer = new Timer(lt, timeLine, timerText);
                 timerInputPanel.setDisable(true);
                 timerInputPanel.setOpacity(0);
                 timer.start();
-            }));
+            });
             background.setDaemon(true);
             background.start();
         } catch (Exception e) {
@@ -79,6 +72,7 @@ public class RootController {
         background.interrupt();
         timer.interrupt();
         timerText.setText("");
+        timeLine.setLength(0);
         timerInputPanel.setDisable(false);
         timerInputPanel.setOpacity(1);
         startButton.setDisable(false);

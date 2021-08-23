@@ -44,9 +44,9 @@
          </cursor>
       </Button>
       <Circle fill="#826bff00" layoutX="160.0" layoutY="190.0" radius="131.0" stroke="#5d96ff66" strokeType="INSIDE" strokeWidth="5.0" />
-      <Arc fx:id="hourTimeLine" fill="#da4308" layoutX="160.0" layoutY="190.0" length="360.0" radiusX="141.0" radiusY="141.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" type="ROUND" />
-      <Arc fx:id="minTimeLine" fill="#fac001" layoutX="160.0" layoutY="190.0" length="360.0" radiusX="136.0" radiusY="136.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" type="ROUND" />
-      <Arc fx:id="secTimeLine" fill="#1f93ff" layoutX="160.0" layoutY="190.0" length="360.0" radiusX="131.0" radiusY="131.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" type="ROUND" />
+      <Arc fx:id="hourTimeLine" fill="#da4308" layoutX="160.0" layoutY="190.0" length="360.0" radiusX="141.0" radiusY="141.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" type="ROUND" visible="false" />
+      <Arc fx:id="minTimeLine" fill="#fac001" layoutX="160.0" layoutY="190.0" length="360.0" radiusX="136.0" radiusY="136.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" type="ROUND" visible="false" />
+      <Arc fx:id="timeLine" fill="#1f93ff" layoutX="160.0" layoutY="190.0" radiusX="131.0" radiusY="131.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" type="ROUND" />
       <Circle fill="WHITE" layoutX="160.0" layoutY="190.0" radius="126.0" stroke="#0000001c" strokeType="INSIDE" strokeWidth="0.0" />
       <Text fx:id="timerText" layoutX="51.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="217.0">
          <font>
