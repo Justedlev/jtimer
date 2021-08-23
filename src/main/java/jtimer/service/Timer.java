@@ -23,9 +23,9 @@ public class Timer extends Thread {
     @Override
     public void run() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
-        double parts = 360. / time.getHour() != 0 ? time.getHour() * 3600 + time.getMinute() * 60 + time.getSecond() :
+        double parts = 360. / (time.getHour() != 0 ? time.getHour() * 3600 + time.getMinute() * 60 + time.getSecond() :
                 time.getMinute() != 0 ? time.getMinute() * 60  + time.getSecond() :
-                        time.getSecond() != 0 ? time.getSecond() : 0;
+                        time.getSecond() != 0 ? time.getSecond() : 0);
         while(true) {
             try {
                 timerText.setText(time.format(dtf));
