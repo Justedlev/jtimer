@@ -1,5 +1,6 @@
 package jtimer.controllers;
 
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -10,6 +11,9 @@ import javafx.scene.shape.Arc;
 import javafx.stage.StageStyle;
 import jtimer.service.Timer;
 import javafx.scene.text.Text;
+
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class RootController {
 
@@ -48,24 +52,25 @@ public class RootController {
 
     @FXML
     void startButton() {
-        int h = Integer.parseInt(hoursTextField.getText());
-        int m = Integer.parseInt(minutesTextField.getText());
-        int s = Integer.parseInt(secondsTextField.getText());
-        if(!hoursTextField.getText().isEmpty() && !minutesTextField.getText().isEmpty() && !secondsTextField.getText().isEmpty()) {
+        try {
+            int h = Integer.parseInt(hoursTextField.getText());
+            int m = Integer.parseInt(minutesTextField.getText());
+            int s = Integer.parseInt(secondsTextField.getText());
+            LocalTime lt = LocalTime.of(h, m, s);
             timerInputPanel.setDisable(true);
             timerInputPanel.setOpacity(0);
             startButton.setDisable(true);
             resetButton.setDisable(false);
             background = new Thread(() -> Platform.runLater(() -> {
-                timer = new Timer(h, m, s, hourTimeLine, minTimeLine, secTimeLine, timerText);
+                timer = new Timer(lt, hourTimeLine, minTimeLine, secTimeLine, timerText);
                 timerInputPanel.setDisable(true);
                 timerInputPanel.setOpacity(0);
                 timer.start();
             }));
             background.setDaemon(true);
             background.start();
-        } else {
-            showWarningAlert("Please set time fields!");
+        } catch (Exception e) {
+            showWarningAlert(e.getMessage());
         }
     }
 
@@ -83,6 +88,21 @@ public class RootController {
     @FXML
     void initialize() {
         resetButton.setDisable(true);
+        hoursTextField.textProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal.matches("\\d*")) {
+                hoursTextField.setText(newVal.replaceAll("[^\\d]", ""));
+            }
+        });
+        minutesTextField.textProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal.matches("\\d*")) {
+                minutesTextField.setText(newVal.replaceAll("[^\\d]", ""));
+            }
+        });
+        secondsTextField.textProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal.matches("\\d*")) {
+                secondsTextField.setText(newVal.replaceAll("[^\\d]", ""));
+            }
+        });
     }
 
     private void showWarningAlert(String explanation) {
