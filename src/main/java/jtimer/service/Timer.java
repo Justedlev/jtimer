@@ -35,6 +35,7 @@ public class Timer extends Thread {
                     timeLine.setLength(timeLine.getLength() + pieces);
                     if(timeLine.getLength() / 360 * 100 >= 75) {
                         timeLine.setStroke(Color.rgb(218, 64, 8));
+                        timerText.setFill(Color.rgb(218, 64, 8));
                     }
                 }
             }

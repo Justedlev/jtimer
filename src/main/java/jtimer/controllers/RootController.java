@@ -67,6 +67,7 @@ public class RootController {
         background.interrupt();
         timer.interrupt();
         timerText.setText("");
+        timerText.setFill(Color.rgb(31, 147, 255));
         timeLine.setLength(0);
         timeLine.setStroke(Color.rgb(31, 147, 255));
         timerInputPanel.setDisable(false);
