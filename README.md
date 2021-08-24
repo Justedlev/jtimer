@@ -1,2 +1,2 @@
 # Just a Timer
-![](snapshot.png)
+![](gif.gif)
