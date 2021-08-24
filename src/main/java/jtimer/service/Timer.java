@@ -22,27 +22,27 @@ public class Timer extends Thread {
 
     @Override
     public void run() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
-        double parts = 360. / (time.getHour() != 0 ? time.getHour() * 3600 + time.getMinute() * 60 + time.getSecond() :
-                time.getMinute() != 0 ? time.getMinute() * 60  + time.getSecond() :
-                        time.getSecond() != 0 ? time.getSecond() : 0);
-        while(true) {
-            try {
+        try {
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+            double pieces = 360. / getTimeInSecond();
+            for (int i = (int) getTimeInSecond(); i >= 0; i--) {
                 timerText.setText(time.format(dtf));
-                time = time.minusSeconds(1);
                 sleep(1000);
-                timeLine.setLength(timeLine.getLength() - parts);
-                if(time.getHour() + time.getMinute() + time.getSecond() == 0) {
-                    timerText.setText(time.format(dtf));
-                    sleep(1000);
-                    timerText.setText("TIME IS OUT!");
-                    return;
+                if (i != 0) {
+                    time = time.minusSeconds(1);
+                    timeLine.setLength(timeLine.getLength() - pieces);
                 }
-            } catch (InterruptedException e) {
-                timerText.setText("");
-                return;
             }
+            timerText.setText("TIME IS OUT!");
+        } catch (InterruptedException e) {
+            timerText.setText("");
         }
+    }
+
+    private double getTimeInSecond() {
+        return time.getHour() != 0 ? time.getHour() * 3600 + time.getMinute() * 60 + time.getSecond() :
+                time.getMinute() != 0 ? time.getMinute() * 60 + time.getSecond() :
+                        time.getSecond() != 0 ? time.getSecond() : 0;
     }
 
 }

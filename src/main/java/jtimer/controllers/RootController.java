@@ -45,17 +45,13 @@ public class RootController {
     @FXML
     void startButton() {
         try {
-            int h = Integer.parseInt(hoursTextField.getText());
-            int m = Integer.parseInt(minutesTextField.getText());
-            int s = Integer.parseInt(secondsTextField.getText());
-            LocalTime lt = LocalTime.of(h, m, s);
             timeLine.setLength(360);
             timerInputPanel.setDisable(true);
             timerInputPanel.setOpacity(0);
             startButton.setDisable(true);
             resetButton.setDisable(false);
             background = new Thread(() -> {
-                timer = new Timer(lt, timeLine, timerText);
+                timer = new Timer(getTimeFromInput(), timeLine, timerText);
                 timerInputPanel.setDisable(true);
                 timerInputPanel.setOpacity(0);
                 timer.start();
@@ -65,6 +61,13 @@ public class RootController {
         } catch (Exception e) {
             showWarningAlert(e.getMessage());
         }
+    }
+
+    private LocalTime getTimeFromInput() throws NumberFormatException {
+        int h = Integer.parseInt(hoursTextField.getText());
+        int m = Integer.parseInt(minutesTextField.getText());
+        int s = Integer.parseInt(secondsTextField.getText());
+        return LocalTime.of(h, m, s);
     }
 
     @FXML
@@ -84,19 +87,23 @@ public class RootController {
         resetButton.setDisable(true);
         hoursTextField.textProperty().addListener((obs, oldVal, newVal) -> {
             if (!newVal.matches("\\d*")) {
-                hoursTextField.setText(newVal.replaceAll("[^\\d]", ""));
+                hoursTextField.setText(isNumber(newVal));
             }
         });
         minutesTextField.textProperty().addListener((obs, oldVal, newVal) -> {
             if (!newVal.matches("\\d*")) {
-                minutesTextField.setText(newVal.replaceAll("[^\\d]", ""));
+                minutesTextField.setText(isNumber(newVal));
             }
         });
         secondsTextField.textProperty().addListener((obs, oldVal, newVal) -> {
             if (!newVal.matches("\\d*")) {
-                secondsTextField.setText(newVal.replaceAll("[^\\d]", ""));
+                secondsTextField.setText(isNumber(newVal));
             }
         });
+    }
+
+    private String isNumber(String value) {
+        return value.replaceAll("[^\\d]", "");
     }
 
     private void showWarningAlert(String explanation) {
