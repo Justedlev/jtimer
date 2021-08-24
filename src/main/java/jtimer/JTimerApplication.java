@@ -15,7 +15,7 @@ public class JTimerApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/jtimer_view.fxml")));
-        stage.setTitle("jtimer");
+        stage.setTitle("jTimer");
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/gui/assets/ic_timer.png"))));
         stage.setScene(new Scene(root, 320, 480));
         stage.setResizable(false);
