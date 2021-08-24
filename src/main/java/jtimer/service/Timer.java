@@ -25,7 +25,7 @@ public class Timer extends Thread {
         try {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
             double pieces = 360. / getTimeInSecond();
-            for (int i = (int) getTimeInSecond(); i >= 0; i--) {
+            for (int i = getTimeInSecond(); i >= 0; i--) {
                 timerText.setText(time.format(dtf));
                 sleep(1000);
                 if (i != 0) {
@@ -39,7 +39,7 @@ public class Timer extends Thread {
         }
     }
 
-    private double getTimeInSecond() {
+    private int getTimeInSecond() {
         return (time.getHour() * 3600) + (time.getMinute() * 60) + time.getSecond();
     }
 
