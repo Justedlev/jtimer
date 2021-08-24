@@ -1,6 +1,5 @@
 package jtimer.controllers;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -63,20 +62,13 @@ public class RootController {
         }
     }
 
-    private LocalTime getTimeFromInput() throws NumberFormatException {
-        int h = Integer.parseInt(hoursTextField.getText());
-        int m = Integer.parseInt(minutesTextField.getText());
-        int s = Integer.parseInt(secondsTextField.getText());
-        return LocalTime.of(h, m, s);
-    }
-
     @FXML
     void resetButton() {
         background.interrupt();
         timer.interrupt();
         timerText.setText("");
         timeLine.setLength(0);
-        timeLine.setStroke(Color.TRANSPARENT);
+        timeLine.setStroke(Color.rgb(31, 147, 255));
         timerInputPanel.setDisable(false);
         timerInputPanel.setOpacity(1);
         startButton.setDisable(false);
@@ -119,6 +111,13 @@ public class RootController {
         alert.setHeaderText(null);
         alert.setContentText(explanation);
         return alert;
+    }
+
+    private LocalTime getTimeFromInput() throws NumberFormatException {
+        int h = Integer.parseInt(hoursTextField.getText());
+        int m = Integer.parseInt(minutesTextField.getText());
+        int s = Integer.parseInt(secondsTextField.getText());
+        return LocalTime.of(h, m, s);
     }
 
 }

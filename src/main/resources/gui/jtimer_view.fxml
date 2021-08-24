@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0"
-            prefWidth="320.0" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/16"
+            prefWidth="320.0" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/1.8"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="jtimer.controllers.RootController">
    <Button fx:id="startButton" layoutX="34.0" layoutY="353.0" mnemonicParsing="false" onAction="#startButton"
            prefHeight="48.0" prefWidth="112.0">
