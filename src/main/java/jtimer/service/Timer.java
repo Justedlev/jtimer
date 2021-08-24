@@ -1,5 +1,7 @@
 package jtimer.service;
 
+import javafx.application.Platform;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.scene.text.Text;
 
@@ -30,7 +32,10 @@ public class Timer extends Thread {
                 sleep(1000);
                 if (i != 0) {
                     time = time.minusSeconds(1);
-                    timeLine.setLength(timeLine.getLength() - pieces);
+                    timeLine.setLength(timeLine.getLength() + pieces);
+                    if(timeLine.getLength() / 360 * 100 >= 75) {
+                        timeLine.setStroke(Color.rgb(218, 64, 8));
+                    }
                 }
             }
             timerText.setText("TIME IS OUT!");

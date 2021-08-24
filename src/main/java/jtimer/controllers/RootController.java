@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.stage.StageStyle;
 import jtimer.service.Timer;
@@ -45,7 +46,6 @@ public class RootController {
     @FXML
     void startButton() {
         try {
-            timeLine.setLength(360);
             timerInputPanel.setDisable(true);
             timerInputPanel.setOpacity(0);
             startButton.setDisable(true);
@@ -76,6 +76,7 @@ public class RootController {
         timer.interrupt();
         timerText.setText("");
         timeLine.setLength(0);
+        timeLine.setStroke(Color.TRANSPARENT);
         timerInputPanel.setDisable(false);
         timerInputPanel.setOpacity(1);
         startButton.setDisable(false);
