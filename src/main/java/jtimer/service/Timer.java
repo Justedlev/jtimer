@@ -40,9 +40,7 @@ public class Timer extends Thread {
     }
 
     private double getTimeInSecond() {
-        return time.getHour() != 0 ? time.getHour() * 3600 + time.getMinute() * 60 + time.getSecond() :
-                time.getMinute() != 0 ? time.getMinute() * 60 + time.getSecond() :
-                        time.getSecond() != 0 ? time.getSecond() : 0;
+        return (time.getHour() * 3600) + (time.getMinute() * 60) + time.getSecond();
     }
 
 }
