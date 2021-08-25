@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="320.0" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/1.8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jtimer.controllers.RootController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="320.0" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jtimer.controllers.RootController">
    <AnchorPane layoutX="24.0" layoutY="32.0" prefHeight="271.0" prefWidth="273.0">
       <Circle fill="#b8d2ff" layoutX="137.0" layoutY="146.0" radius="120.0" stroke="#b5d0ff" strokeType="INSIDE" strokeWidth="0.0" />
       <Arc fx:id="timeLine" fill="#ffffff00" layoutX="137.0" layoutY="146.0" radiusX="120.0" radiusY="120.0" startAngle="90.0" stroke="#1f93ff" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="8.0" type="ROUND" />
@@ -66,7 +66,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="resetButton" layoutX="176.0" layoutY="400.0" mnemonicParsing="false" onAction="#resetButton" prefHeight="48.0" prefWidth="112.0">
+   <Button fx:id="resetButton" disable="true" layoutX="176.0" layoutY="400.0" mnemonicParsing="false" onAction="#resetButton" prefHeight="48.0" prefWidth="112.0">
       <font>
          <Font size="15.0" />
       </font>

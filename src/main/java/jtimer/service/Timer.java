@@ -1,6 +1,5 @@
 package jtimer.service;
 
-import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.scene.text.Text;

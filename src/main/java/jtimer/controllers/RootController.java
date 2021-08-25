@@ -11,6 +11,7 @@ import javafx.stage.StageStyle;
 import jtimer.service.Timer;
 import javafx.scene.text.Text;
 
+import java.time.DateTimeException;
 import java.time.LocalTime;
 
 public class RootController {
@@ -45,14 +46,15 @@ public class RootController {
     @FXML
     void startButton() {
         try {
+            LocalTime lt = getTimeFromInput();
             timerInputPanel.setDisable(true);
             timerInputPanel.setOpacity(0);
             startButton.setDisable(true);
             resetButton.setDisable(false);
             background = new Thread(() -> {
-                timer = new Timer(getTimeFromInput(), timeLine, timerText);
                 timerInputPanel.setDisable(true);
                 timerInputPanel.setOpacity(0);
+                timer = new Timer(lt, timeLine, timerText);
                 timer.start();
             });
             background.setDaemon(true);
@@ -64,7 +66,6 @@ public class RootController {
 
     @FXML
     void resetButton() {
-        background.interrupt();
         timer.interrupt();
         timerText.setText("");
         timerText.setFill(Color.rgb(31, 147, 255));
@@ -78,7 +79,6 @@ public class RootController {
 
     @FXML
     void initialize() {
-        resetButton.setDisable(true);
         hoursTextField.textProperty().addListener((obs, oldVal, newVal) -> {
             if (!newVal.matches("\\d*")) {
                 hoursTextField.setText(isNumber(newVal));
@@ -114,7 +114,7 @@ public class RootController {
         return alert;
     }
 
-    private LocalTime getTimeFromInput() throws NumberFormatException {
+    private LocalTime getTimeFromInput() throws NumberFormatException, DateTimeException {
         int h = Integer.parseInt(hoursTextField.getText());
         int m = Integer.parseInt(minutesTextField.getText());
         int s = Integer.parseInt(secondsTextField.getText());
