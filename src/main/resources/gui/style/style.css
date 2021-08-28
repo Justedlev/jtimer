@@ -17,6 +17,16 @@
     -fx-background-color: #FAC001;
 }
 
+.text-field {
+    -fx-text-box-border: #D8E2F3;
+    -fx-background-insets: 0, 2 2 5 2 ;
+    -fx-background-radius: 10 ;
+}
+.text-field:focused {
+    -fx-focus-color: #1f93ff;
+    -fx-effect: dropshadow(three-pass-box, rgba(43, 43, 43, 0.4), 10, 0, 0, 0);
+}
+
 .background-color-red {
     -fx-background-insets: 0 0 0 0, 0, 1, 1;
     -fx-text-fill: #2e0d0d;

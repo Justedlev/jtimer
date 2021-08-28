@@ -24,34 +24,34 @@
       </font>
    </Text>
    <AnchorPane fx:id="timerInputPanel" layoutX="45.0" layoutY="301.0" prefHeight="85.0" prefWidth="234.0">
-      <TextField fx:id="hoursTextField" alignment="CENTER" layoutX="20.0" layoutY="20.0" prefHeight="44.0" prefWidth="49.0" promptText="00" text="0">
+      <TextField fx:id="hoursTextField" alignment="CENTER" layoutX="14.0" layoutY="20.0" prefHeight="44.0" prefWidth="60.0" promptText="0-23" text="0">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <Text layoutX="26.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours" />
-      <Text layoutX="144.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":" wrappingWidth="4.6015625">
+      <Text layoutX="28.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours" />
+      <Text fill="#949494" layoutX="148.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":" wrappingWidth="4.6015625">
          <font>
-            <Font size="50.0" />
+            <Font size="45.0" />
          </font>
       </Text>
-      <TextField fx:id="minutesTextField" alignment="CENTER" layoutX="90.0" layoutY="20.0" prefHeight="44.0" prefWidth="49.0" promptText="00" text="0">
+      <TextField fx:id="minutesTextField" alignment="CENTER" layoutX="87.0" layoutY="20.0" prefHeight="44.0" prefWidth="60.0" promptText="0-59" text="0">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <Text layoutX="96.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minutes" />
-      <Text layoutX="75.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":" wrappingWidth="4.6015625">
+      <Text layoutX="96.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minutes" />
+      <Text fill="#949494" layoutX="76.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":" wrappingWidth="4.6015625">
          <font>
-            <Font size="50.0" />
+            <Font size="45.0" />
          </font>
       </Text>
-      <TextField fx:id="secondsTextField" alignment="CENTER" layoutX="161.0" layoutY="20.0" prefHeight="44.0" prefWidth="49.0" promptText="00" text="10">
+      <TextField fx:id="secondsTextField" alignment="CENTER" layoutX="160.0" layoutY="20.0" prefHeight="44.0" prefWidth="60.0" promptText="0-59" text="10">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <Text layoutX="170.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seconds" />
+      <Text layoutX="168.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seconds" />
    </AnchorPane>
    <Button fx:id="startButton" layoutX="36.0" layoutY="400.0" mnemonicParsing="false" onAction="#startButton" prefHeight="48.0" prefWidth="112.0">
       <font>
