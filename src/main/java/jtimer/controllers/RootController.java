@@ -49,11 +49,8 @@ public class RootController {
             LocalTime lt = getTimeFromInput();
             timerInputPanel.setDisable(true);
             timerInputPanel.setOpacity(0);
-            startButton.setDisable(true);
-            resetButton.setDisable(false);
+            reverseTheButtons();
             background = new Thread(() -> {
-                timerInputPanel.setDisable(true);
-                timerInputPanel.setOpacity(0);
                 timer = new Timer(lt, timeLine, timerText);
                 timer.start();
             });
@@ -73,8 +70,7 @@ public class RootController {
         timeLine.setStroke(Color.rgb(31, 147, 255));
         timerInputPanel.setDisable(false);
         timerInputPanel.setOpacity(1);
-        startButton.setDisable(false);
-        resetButton.setDisable(true);
+        reverseTheButtons();
     }
 
     @FXML
@@ -98,6 +94,11 @@ public class RootController {
 
     private String isNumber(String value) {
         return value.replaceAll("[^\\d]", "");
+    }
+
+    private void reverseTheButtons() {
+        startButton.setDisable(!startButton.isDisable());
+        resetButton.setDisable(!resetButton.isDisable());
     }
 
     private void showWarningAlert(String explanation) {
