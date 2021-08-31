@@ -1,9 +1,9 @@
 # Just a Timer
 
-JTimer - this is a simple timer.
+jTimer - this is a simple timer.
 
-version 1.2.1
+version 1.2.2
 
 **[-> Download <-](https://github.com/Justedlev/jtimer/releases/tag/v1.2.1)**
 
-![](preview-v1.2.1.gif)
+![](preview-v1.2.2.gif)
