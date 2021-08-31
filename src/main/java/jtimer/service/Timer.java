@@ -25,20 +25,22 @@ public class Timer extends Thread {
     public void run() {
         try {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
-            double pieces = 360. / getTimeInSecond();
+            int timeInSeconds = getTimeInSecond();
+            double pieces = 360. / timeInSeconds;
+            double quarter = 360 * 75 / 100.;
+            boolean isColorChanged = false;
             for (int i = getTimeInSecond(); i >= 0; i--) {
                 timerText.setText(time.format(dtf));
                 sleep(1000);
-                if (i != 0) {
-                    time = time.minusSeconds(1);
-                    timeLine.setLength(timeLine.getLength() + pieces);
-                    if(timeLine.getLength() / 360 * 100 >= 75) {
-                        timeLine.setStroke(Color.rgb(218, 64, 8));
-                        timerText.setFill(Color.rgb(218, 64, 8));
-                    }
+                time = time.minusSeconds(1);
+                timeLine.setLength(timeLine.getLength() + pieces);
+                if(!isColorChanged && timeLine.getLength() >= quarter) {
+                    isColorChanged = true;
+                    timeLine.setStroke(Color.rgb(218, 64, 8));
+                    timerText.setFill(Color.rgb(218, 64, 8));
                 }
             }
-            timerText.setText("TIME IS OUT!");
+            timerText.setText("Time is over!");
         } catch (InterruptedException e) {
             timerText.setText("");
         }

@@ -46,9 +46,9 @@ public class RootController {
     @FXML
     void startButton() {
         try {
+            fixTimeFieldsIfEmpty();
             LocalTime lt = getTimeFromInput();
             timerInputPanel.setDisable(true);
-            timerInputPanel.setOpacity(0);
             reverseTheButtons();
             background = new Thread(() -> {
                 timer = new Timer(lt, timeLine, timerText);
@@ -66,8 +66,8 @@ public class RootController {
         timer.interrupt();
         timerText.setText("");
         timerText.setFill(Color.rgb(31, 147, 255));
-        timeLine.setLength(0);
         timeLine.setStroke(Color.rgb(31, 147, 255));
+        timeLine.setLength(0);
         timerInputPanel.setDisable(false);
         timerInputPanel.setOpacity(1);
         reverseTheButtons();
@@ -90,6 +90,18 @@ public class RootController {
                 secondsTextField.setText(isNumber(newVal));
             }
         });
+    }
+
+    private void fixTimeFieldsIfEmpty() {
+        if(hoursTextField.getText().isEmpty()) {
+            hoursTextField.setText("0");
+        }
+        if(minutesTextField.getText().isEmpty()) {
+            minutesTextField.setText("0");
+        }
+        if(secondsTextField.getText().isEmpty()) {
+            secondsTextField.setText("0");
+        }
     }
 
     private String isNumber(String value) {
