@@ -69,7 +69,9 @@ public class RootController {
         timeLine.setStroke(Color.rgb(31, 147, 255));
         timeLine.setLength(0);
         timerInputPanel.setDisable(false);
-        timerInputPanel.setOpacity(1);
+        if(timer.isTimeInterrupted()) {
+            setTime();
+        }
         reverseTheButtons();
     }
 
@@ -90,6 +92,13 @@ public class RootController {
                 secondsTextField.setText(isNumber(newVal));
             }
         });
+    }
+
+    private void setTime() {
+        LocalTime time = timer.getTime();
+        hoursTextField.setText(String.valueOf(time.getHour()));
+        minutesTextField.setText(String.valueOf(time.getMinute()));
+        secondsTextField.setText(String.valueOf(time.getSecond()));
     }
 
     private void fixTimeFieldsIfEmpty() {

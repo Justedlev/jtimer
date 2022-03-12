@@ -9,7 +9,9 @@ import java.time.format.DateTimeFormatter;
 
 public class Timer extends Thread {
 
-    LocalTime time;
+    private LocalTime time;
+    private boolean timeOver;
+    private boolean timeInterrupted;
 
     private Arc timeLine;
     private Text timerText;
@@ -19,6 +21,18 @@ public class Timer extends Thread {
         this.timerText = timerText;
         this.timeLine = timeLine;
         setDaemon(true);
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public boolean isTimeOver() {
+        return timeOver;
+    }
+
+    public boolean isTimeInterrupted() {
+        return timeInterrupted;
     }
 
     @Override
@@ -35,13 +49,15 @@ public class Timer extends Thread {
                 time = time.minusSeconds(1);
                 timeLine.setLength(timeLine.getLength() + pieces);
                 if(!isColorChanged && timeLine.getLength() >= quarter) {
-                    isColorChanged = true;
                     timeLine.setStroke(Color.rgb(218, 64, 8));
                     timerText.setFill(Color.rgb(218, 64, 8));
+                    isColorChanged = true;
                 }
             }
             timerText.setText("Time is over!");
+            timeOver = true;
         } catch (InterruptedException e) {
+            timeInterrupted = true;
             timerText.setText("");
         }
     }
